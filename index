@@ -75,10 +75,7 @@ html.js-vh-fix #app { height: var(--app-height, 100vh); }
   z-index: 50;
   flex-shrink: 0;
 }
-/* En mode app installée (standalone), le header descend sous l'encoche */
-html.pwa-standalone #header {
-  padding-top: calc(10px + env(safe-area-inset-top));
-}
+/* Espace pour l'encoche/Dynamic Island en mode app installée — géré en JS */
 #header-top {
   display: flex;
   align-items: center;
@@ -783,10 +780,25 @@ setAppHeight();
 window.addEventListener('resize', setAppHeight);
 window.addEventListener('orientationchange', setAppHeight);
 
-// Détection du mode standalone (app installée sur l'écran d'accueil iOS/Android)
+// Détection mode standalone (app installée sur écran d'accueil iOS)
 // navigator.standalone = true uniquement sur iOS en mode installé
-if (window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches) {
+if (window.navigator.standalone === true) {
   document.documentElement.classList.add('pwa-standalone');
+  // Forcer le padding-top du header pour descendre sous l'encoche/Dynamic Island
+  // On utilise env(safe-area-inset-top) via une div de mesure, avec fallback à 50px
+  const headerEl = document.getElementById('header');
+  if (headerEl) {
+    const measurer = document.createElement('div');
+    measurer.style.cssText = 'position:fixed;top:env(safe-area-inset-top,50px);left:0;width:1px;height:1px;opacity:0;pointer-events:none;';
+    document.body.appendChild(measurer);
+    // Laisser le navigateur calculer env()
+    requestAnimationFrame(() => {
+      const safeTop = measurer.getBoundingClientRect().top;
+      const paddingTop = Math.max(44, safeTop) + 10;
+      headerEl.style.paddingTop = paddingTop + 'px';
+      document.body.removeChild(measurer);
+    });
+  }
 }
 
 let currentPos = null;
