@@ -71,11 +71,12 @@ html.js-vh-fix #app { height: var(--app-height, 100vh); }
 #header {
   background: transparent;
   padding: 10px 16px 16px;
+  padding-top: calc(10px + env(safe-area-inset-top));
   position: relative;
   z-index: 50;
   flex-shrink: 0;
 }
-/* Espace pour l'encoche/Dynamic Island en mode app installée — géré en JS */
+/* safe-area-inset-top vaut 0 sur Safari web, et la hauteur de l'encoche en mode app installée */
 #header-top {
   display: flex;
   align-items: center;
@@ -780,25 +781,9 @@ setAppHeight();
 window.addEventListener('resize', setAppHeight);
 window.addEventListener('orientationchange', setAppHeight);
 
-// Détection mode standalone (app installée sur écran d'accueil iOS)
-// navigator.standalone = true uniquement sur iOS en mode installé
+// Mode standalone détecté pour référence future si besoin
 if (window.navigator.standalone === true) {
   document.documentElement.classList.add('pwa-standalone');
-  // Forcer le padding-top du header pour descendre sous l'encoche/Dynamic Island
-  // On utilise env(safe-area-inset-top) via une div de mesure, avec fallback à 50px
-  const headerEl = document.getElementById('header');
-  if (headerEl) {
-    const measurer = document.createElement('div');
-    measurer.style.cssText = 'position:fixed;top:env(safe-area-inset-top,50px);left:0;width:1px;height:1px;opacity:0;pointer-events:none;';
-    document.body.appendChild(measurer);
-    // Laisser le navigateur calculer env()
-    requestAnimationFrame(() => {
-      const safeTop = measurer.getBoundingClientRect().top;
-      const paddingTop = Math.max(44, safeTop) + 10;
-      headerEl.style.paddingTop = paddingTop + 'px';
-      document.body.removeChild(measurer);
-    });
-  }
 }
 
 let currentPos = null;
