@@ -2,10 +2,16 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- PWA / Icône écran d'accueil iOS + Android -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Walko">
 <meta name="theme-color" content="#6C4FE0">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAANEElEQVR4nO2dS1dbyRWFtySQMI1fdOMXxoCgY0OvlbWSDHvlN/g3JGNPM+tRfoNnmWbYGXhlZdKzzDN12+02AszDD9wYDLGRhKQMaDnyRY9776lTt+rW/uaqK9DZVafOqV23AIs8uL/Rsfk84icPHy0UbD1L9UEMeGICTUEYH5hBTzQxLQZjgzHwiU1MCUE8CAOfZIlUCEXJhxn8JGukMZhKPQx84iJpVoPEKwCDn7hKmthMJAAGP3GdpDEaWwAMfuILSWI1lgAY/MQ34sbsSAEw+ImvxIndoQJg8BPfGRXDAwXA4Cd5YVgsixphhPhOXwFw9id5Y1BMnxMAg5/klX6xzRSIBM1nAuDsT/JONMa5ApCg+SQAzv4kFHpjnSsACRoKgARNEWD6Q8KjG/NcAUjQUAAkaCgAEjQF5v8kZLgCkKChAEjQUAAkaCgAEjQUAAkaCoAEDQVAgoYCIEFDAZCgoQBI0FAAJGgoABI0FAAJGgqABA0FQIKGAiBBQwGQoKEASNBQACRoxrL+AgDw+28n8ae/zBgf97s/b+Nwv2V83GHc/e0EHvz1uvFxf/j+EP/8+4HxcUfx3cNbuH573OiY3/9tH//+15HRMdPixArw/Me6yrhLKxWVcYdRXdV55tLqhMq4w5i6VMS1WbPBDwBrT3R+7zQ4IYD371p4++rU+LhZBM3Sis4z7yyXURorqIw9iOrKBAqGH1n/2MbuRsPsoAKcEAAArP14YnzMpW/srgDFIrBwV+eZ4+UC7iyXVcYexJLCarb+Ux3ttvFhU+OQAMwvi7fmy7gwae9PnF0sozKhN0vbTuk0BKDxO0vItQAKBWDxnr2gWVZOuZa+sZfSlScKmKtSANZ4s9vE0aH5io3GLDYIrQ3wp/HvVYzn5INY/E0FxZLZMVutDjaeUQADqSnMDjZnzaryajM5VcSNOfNVmX5oFBC21hpoNty6idMpAWgsj/PLZYyN60+bMzfHcOmq4SmzD1WlKtO55yisZjWHyp9d3BLAE/OVoLHxAuYtVE9slVyXLaR0xdJZCmQa1/J/wDEBbNcaqJ+YXyJtpEG2KjTa+wwAmKtWUFaoZtUUJjgpTgmg3QbWnyrsAywEjY3ABIDpmTFc+VI31dL4f73ebuL4vUMNgF9xSgCAziyxqFw9mbpUwrVbdjangH66pVL/dzD/BxwUgMa5oAuTRdya19sH2O44a69oGhttFzfAgIMC2PipjlZLYx+gFzS2O7RVxefduD2OqUvmw0LjqIsJnBNAs9HB1nPzh6U00wZbpckumkc8NFYXrcOOJnBOAIBOvqg1S5crBcxV7R5S0zziUVWYKFwsf3ZxUwAKy+Xl6RK+um7e/7N41/yRgTho7QM0+gwa/R1TOCqAOjoKHXONfoCt8mcUjZTuypclTF8zP0m4ugEGHBXAh+M2Xm83jY+rMWtqGWBGoWGQ0RBV/WMbO+vuGGCiOCkAQMkgY3gfIDXASFY5DYOMjgGm4ZQBJoqzAtDoB1ybHcfFy+YSdqkB5vF/Poqeb1rQGiuAq+XPLs4KQONoNGA2Z5caYH74x6FoFTC5p7nwRRE37+TbAN8PZwWwv3eKd281jPLmBCAR0/H7Ntaf1vFqK/1ex6RBZmnF/HGRVquDTccMMFGcFQCgUz82uWmVGGC6Z56eC1IEkwYZjfr/dq2BRt0tA0wUpwWgkQbdrpoxrksNMN3S4Npj2d9oqgutUv93uAHWxWkBSGbHQRSLZrqo0g1jNzikm0QTgat15YrL9f8uTgvg1VYTH47N19BMVDskFZhmo4OttbPa+MEvLey/Sb/XMbGpn/+6onLpFlcAIZ0OUNMwyBgoH0oCb+PZ5ydeJSVfEwYZjfr/m50mjt/bvZc1DU4LAADWHptPgxbuVlAqpZ/xpAaY6MwoTYOkK1pIBpgo7gtAYRkdLxcwJ8h5pd6C8wKQ/Y2SAC4Uzg70mcaH9AfwQAAvnuvcJSNJgySfbbfP7sfs5cwvmz5dkBhkZhfLmFDwFrhogO+H8wJotTrY/FnDKJ8+bZCUHnfWG6h/PL+xl8yYEoOMlgFm76WbBpgozgsAkNfK+7G0mq7zKTXADCoNSgQgMcho3GfqQ/mzixcC0DgYl7aLKjXADDKHyDfC6QSg4S922QATxQsBaN0pnyaVkdbdB8300kvB0qR0Wtc5+rIBBjwRgJapIk0XVXKW6O2rU7x/13+z226f3YiRljQGGRUDzEnHaQNMFC8EACgdjEsoAKkBZlSaI0mD0hxn0NgAbzj2BphR+CMAhbzy6swYrs7E98BKDTCjNofSvU7S8myIBpgo/gjAgTdJSismowJceilYEoPMxSslzNw0b4D3pQPcxRsBHB20sLebrUFGZoBp4c3OcPOL9FKwJAYZjfSn3ZLtY7LAGwEAOmlQkjRAZoCJFxiSlS5JaVej/r/lgQEmil8CUEiDbsyNY3Jq9L9BWjKM+92lHoi4pV2NFcCX4w+9eCYA8//gQiFeM8iUAWYUtSeyS8HilHYrF4q4tWDeAONT/b+LVwLYezm4ji4hTjogOQDXqHewVYsXHB+O2zKjfAwBVO9VUFT45X06AtHFKwEAOv/kOOmAZAO8+ayOdgLdStKgOAYZFQOM0mtutfFOABo+4bnlMsbLg8snUgNM0vq+9PDfqHRNJf/3MP0BPBSARp5ZKhWwMOStiFIDTNLNoebBuNJYAfNfh+sAi+KdAHbWGzj5oGGUHyIAqQEmoa9ZbJQf8n3vjFjt0uJbB7iLdwLodM47qkwwLG0QG2BSnPKUHIsYZpDRuP/n6MAfA0wU7wQA6KRBiwMqI1IDTNrvKplRhxlkVM7/eJr+ABTAJyoTBcwung90LQPMyM8pGOW1Xq3k6wYY8FQAmz/X0To133Lv1w+QGmDSlm2lRvl+M/3NO/G63knxyQEWxUsBNBsdvFB5k+T5YJcYYKSNO8kq0M8go5H+NE462PbIABPFSwEAOnlndLaXGmCkZ2MkAuhnkNF5A0yyJp9r+CsAhRvjLl7+vOElNcBI83hxPyBSDtXZAPub/gAeC6D2VOlNkj2zpPTIsFQAYqN8j0Fm+pr8DtF++LwBBjwWgPTQ2CB6BSDZAB8dtvBmV/b90jTReuk1yGjU/9stYN3xN8CMwlsBADrngnpnTRsGmFFI0qBeg4xG+rO93kBDsEK5gNcC0Lgx7qvrY7g8XbJmgNEep9vF1niht6/HH3rxWwBKP8DSSkU8Y5pyR0XfJZCU5dUKpi4VcX02vDdAxsFrARz80sL+noZRfkJmgDnpYKtmpjYuNsqvVlBdmTD+BkjA/w0w4LkAAJ1jEdXVivgNMCZr45K/cXpmDH/446S5L/Mre7unXhpgovgvAIV+wOxC2egbYKRIN/u/+/YLQ9/k//he/+/ivwAU8lBpumA6OKRGeY30Jw/5P5ADAbzebuK/R+5cRim95LYfWj0PCXmoAAE5EECn49aPIe3eDkKj55GWo0OdW/qywHsBAG5dx6GVG2v0PNKSh+pPl1wIwKULmbSCw6VVLi/5P5ATAWytuXMnpVZwSI3yJvHxCsRB5EIArVYHmw4cytrbPcXRgV5tXONdaUkx2eRzgVwIAHAjOLRr4y6kQeuGm3xZkxsBuBAc2rmxC3udPG2AgRwJwAVrnrYIpUZ5E+SlA9wlNwLI2pxtqzae5Sqg0eTLmtwIAMg2DbKVGmQpgLS33LlMzgSQXXDYenaWInepG20KCsDUsy3lxlpHLeKQtw0wkDMBxHkTowY29x9So7yEPHWAu+RKAEA2/QDbtfEs0qC9l7pNvqzInQCyOBhnOyCzSPXydPyhl9wJQMMhNgrbufHGM53LgYfhQqddg9wJ4O3rUxzu21uqs7gcqtno4MWa3Z5HHjfAQA4FANjdrG3VsrkcymYaZOKWO1fJpwAs5uRZ5cY2Uz2XDEemyacALLqnsioNal0O3PdZFIBf7G428FHhTZL9yCo3/nDcxssXdtISF06halF4cH8jX4c7CElALlcAQuJCAZCgoQBI0FAAJGgoABI0FAAJGgqABA0FQIKGAiBBQwGQoKEASNBQACRoKAASNBQACRoKgAQNBUCChgIgQUMBkKChAEjQUAAkaCgAEjQUAAkaCoAEDQVAgoYCIEFDAZCgoQBI0FAAJGgoABI0FAAJmuLDRwuFrL8EIVnw8NFCgSsACRoKgAQNBUCCpgic5UJZfxFCbNKNea4AJGgoABI0nwTANIiEQm+scwUgQfOZALgKkLwTjXGuACRozgmAqwDJK/1iu+8KQBGQvDEoppkCkaAZKACuAiQvDIvloSsARUB8Z1QMj0yBKALiK3FiN9YegCIgvhE3ZmNvgikC4gtJYjVRFYgiIK6TNEYTl0EpAuIqaWJTFMwP7m90JJ8nxASSSVnUCONqQLJGGoPGApirAbGJqcnX+AxOIRBNTGcdqikMxUBMoJlqW83hKQgSB5t7y/8BgvtZlO8hY8AAAAAASUVORK5CYII=">
+<link rel="manifest" href="data:application/json,%7B%22name%22%3A%22Walko%22%2C%22short_name%22%3A%22Walko%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%236C4FE0%22%2C%22theme_color%22%3A%22%236C4FE0%22%7D">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Walko</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -68,6 +74,13 @@ html.js-vh-fix #app { height: var(--app-height, 100vh); }
   position: relative;
   z-index: 50;
   flex-shrink: 0;
+}
+/* En mode app installée (standalone), on ajoute l'espace pour l'encoche/Dynamic Island
+   Sans affecter les utilisateurs sur Safari ou navigateur web */
+@media all and (display-mode: standalone) {
+  #header {
+    padding-top: calc(10px + env(safe-area-inset-top));
+  }
 }
 #header-top {
   display: flex;
